@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet var ibMainView: UIView!
     @IBOutlet weak var ibSliderRed: UISlider!
     @IBOutlet weak var ibSliderGreen: UISlider!
     @IBOutlet weak var ibSliderBlue: UISlider!
@@ -17,15 +18,44 @@ class ViewController: UIViewController {
     @IBOutlet weak var ibLabelGreenValue: UILabel!
     @IBOutlet weak var ibLabelBlueValue: UILabel!
     @IBOutlet weak var ibViewColor: UIView!
+    @IBOutlet weak var ibSwichComponent: UISegmentedControl!
+    @IBOutlet weak var ibButtonMax: UIButton!
+    @IBOutlet weak var ibButtonMedium: UIButton!
+    @IBOutlet weak var ibButtonMin: UIButton!
+    
+    
+    func colorFillComponent(){
+        let color = UIColor(red: CGFloat(ibSliderRed.value / 255), green: CGFloat(ibSliderGreen.value / 255), blue: CGFloat(ibSliderBlue.value / 255), alpha: 1)
+        
+        switch ibSwichComponent.selectedSegmentIndex {
+        case 0:
+            ibViewColor.backgroundColor = color
+        case 1:
+            ibButtonMax.backgroundColor = color
+            ibButtonMin.backgroundColor = color
+            ibButtonMedium.backgroundColor = color
+        case 2:
+            ibMainView.backgroundColor = color
+        case 3:
+            ibButtonMax.titleLabel?.textColor = color
+            ibButtonMedium.titleLabel?.textColor = color
+            ibButtonMin.titleLabel?.textColor = color
+        case 4:
+            ibLabelBlueValue.textColor = color
+            ibLabelRedValue.textColor = color
+            ibLabelGreenValue.textColor = color
+            
+        default:
+            ibMainView.backgroundColor = color
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         ibLabelRedValue.text = String(Int(ibSliderRed.value))
         ibLabelBlueValue.text = String(Int(ibSliderBlue.value))
         ibLabelGreenValue.text = String(Int(ibSliderGreen.value))
-        let color = UIColor(red: CGFloat(ibSliderRed.value / 255), green: CGFloat(ibSliderGreen.value / 255), blue: CGFloat(ibSliderBlue.value / 255), alpha: 1)
-        ibViewColor.backgroundColor = color
-        // Do any additional setup after loading the view, typically from a nib.
+        colorFillComponent()
     }
     
     @IBAction func ibMaxButtonPress(_ sender: Any) {
@@ -35,8 +65,7 @@ class ViewController: UIViewController {
         ibLabelRedValue.text = String(Int(ibSliderRed.value))
         ibLabelBlueValue.text = String(Int(ibSliderBlue.value))
         ibLabelGreenValue.text = String(Int(ibSliderGreen.value))
-        let color = UIColor(red: CGFloat(ibSliderRed.value / 255), green: CGFloat(ibSliderGreen.value / 255), blue: CGFloat(ibSliderBlue.value / 255), alpha: 1)
-        ibViewColor.backgroundColor = color
+        colorFillComponent()
         
     }
     
@@ -47,8 +76,7 @@ class ViewController: UIViewController {
         ibLabelRedValue.text = String(Int(ibSliderRed.value))
         ibLabelBlueValue.text = String(Int(ibSliderBlue.value))
         ibLabelGreenValue.text = String(Int(ibSliderGreen.value))
-        let color = UIColor(red: CGFloat(ibSliderRed.value / 255), green: CGFloat(ibSliderGreen.value / 255), blue: CGFloat(ibSliderBlue.value / 255), alpha: 1)
-        ibViewColor.backgroundColor = color
+        colorFillComponent()
     }
     
     @IBAction func ibMinButtonPress(_ sender: Any) {
@@ -58,27 +86,23 @@ class ViewController: UIViewController {
         ibLabelRedValue.text = String(Int(ibSliderRed.value))
         ibLabelBlueValue.text = String(Int(ibSliderBlue.value))
         ibLabelGreenValue.text = String(Int(ibSliderGreen.value))
-        let color = UIColor(red: CGFloat(ibSliderRed.value / 255), green: CGFloat(ibSliderGreen.value / 255), blue: CGFloat(ibSliderBlue.value / 255), alpha: 1)
-        ibViewColor.backgroundColor = color
+        colorFillComponent()
     }
     
     @IBAction func ibSliderRedValueChanged(_ sender: Any) {
         ibLabelRedValue.text = String(Int(ibSliderRed.value))
-        let color = UIColor(red: CGFloat(ibSliderRed.value / 255), green: CGFloat(ibSliderGreen.value / 255), blue: CGFloat(ibSliderBlue.value / 255), alpha: 1)
-        ibViewColor.backgroundColor = color
+        colorFillComponent()
     }
     
     @IBAction func ibSliderGreenValueChanged(_ sender: Any) {
         ibLabelGreenValue.text = String(Int(ibSliderGreen.value))
-        let color = UIColor(red: CGFloat(ibSliderRed.value / 255), green: CGFloat(ibSliderGreen.value / 255), blue: CGFloat(ibSliderBlue.value / 255), alpha: 1)
-        ibViewColor.backgroundColor = color
+        colorFillComponent()
     }
     
     @IBAction func ibSliderBueValueChanged(_ sender: Any) {
         ibLabelBlueValue.text = String(Int(ibSliderBlue.value))
-        let color = UIColor(red: CGFloat(ibSliderRed.value / 255), green: CGFloat(ibSliderGreen.value / 255), blue: CGFloat(ibSliderBlue.value / 255), alpha: 1)
-        ibViewColor.backgroundColor = color
+        colorFillComponent()
+        
     }
-    
 }
 

@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wnp-EC-zSV">
-                                <rect key="frame" x="16" y="48" width="105" height="41"/>
+                                <rect key="frame" x="16" y="48" width="105" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Min">
@@ -74,7 +74,7 @@
                                 <rect key="frame" x="16" y="144" width="47" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3LY-O0-ArT">
@@ -95,7 +95,7 @@
                                 <rect key="frame" x="16" y="224" width="57" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gln-eY-8hP">
@@ -116,7 +116,7 @@
                                 <rect key="frame" x="16" y="303" width="42" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mixed colors:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPY-Bn-O4i">
@@ -133,17 +133,33 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="FUX-xq-1uF">
+                                <rect key="frame" x="16" y="364" width="343" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="View"/>
+                                    <segment title="Button"/>
+                                    <segment title="Background"/>
+                                    <segment title="TextBut"/>
+                                    <segment title="Textslider"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="ibButtonMax" destination="ra4-Cw-IoD" id="VW8-EM-4Oq"/>
+                        <outlet property="ibButtonMedium" destination="KXx-3o-l6c" id="IiF-m7-uQX"/>
+                        <outlet property="ibButtonMin" destination="Wnp-EC-zSV" id="HHI-FE-ssz"/>
                         <outlet property="ibLabelBlueValue" destination="kwH-Of-8Rn" id="78g-Ju-yMI"/>
                         <outlet property="ibLabelGreenValue" destination="gln-eY-8hP" id="Jh8-U2-koY"/>
                         <outlet property="ibLabelRedValue" destination="3LY-O0-ArT" id="gKr-FB-IMw"/>
+                        <outlet property="ibMainView" destination="8bC-Xf-vdC" id="b7H-53-N4e"/>
                         <outlet property="ibSliderBlue" destination="vPG-11-1Xx" id="rcp-BI-VkG"/>
                         <outlet property="ibSliderGreen" destination="sdn-Da-pgw" id="7BB-Nd-rQL"/>
                         <outlet property="ibSliderRed" destination="fkH-Y0-CeT" id="UiG-Bi-KZR"/>
+                        <outlet property="ibSwichComponent" destination="FUX-xq-1uF" id="exb-PA-oo6"/>
                         <outlet property="ibViewColor" destination="QsN-BJ-HHB" id="xUq-0i-JQ1"/>
                     </connections>
                 </viewController>
