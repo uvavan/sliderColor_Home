@@ -14,14 +14,28 @@ class ViewController: UIViewController {
     @IBOutlet weak var ibSliderRed: UISlider!
     @IBOutlet weak var ibSliderGreen: UISlider!
     @IBOutlet weak var ibSliderBlue: UISlider!
+    
     @IBOutlet weak var ibLabelRedValue: UILabel!
     @IBOutlet weak var ibLabelGreenValue: UILabel!
     @IBOutlet weak var ibLabelBlueValue: UILabel!
+    
     @IBOutlet weak var ibViewColor: UIView!
+    
     @IBOutlet weak var ibSwichComponent: UISegmentedControl!
+    
     @IBOutlet weak var ibButtonMax: UIButton!
     @IBOutlet weak var ibButtonMedium: UIButton!
     @IBOutlet weak var ibButtonMin: UIButton!
+    
+    let minValueSlider: Float = 0
+    let maxValueSlider: Float = 255
+    var medValueSlider: Float {
+        return (maxValueSlider - minValueSlider) / 2
+    }
+    
+    var colorSlider: [UISlider]{
+        return [ibSliderRed, ibSliderGreen, ibSliderBlue]
+    }
     
     
     func colorFillComponent(){
@@ -50,52 +64,52 @@ class ViewController: UIViewController {
         }
     }
     
+    func updateLabelColor() {
+        ibLabelRedValue.text = "\(Int(ibSliderRed.value))"
+        ibLabelBlueValue.text = "\(Int(ibSliderBlue.value))"
+        ibLabelGreenValue.text = "\(Int(ibSliderGreen.value))"
+    }
+    
+    func setToAllSlider(_ value: Float){
+        for slider in colorSlider {
+            slider.value = value
+        }
+        colorFillComponent()
+        updateLabelColor()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        ibLabelRedValue.text = String(Int(ibSliderRed.value))
-        ibLabelBlueValue.text = String(Int(ibSliderBlue.value))
-        ibLabelGreenValue.text = String(Int(ibSliderGreen.value))
+        updateLabelColor()
         colorFillComponent()
     }
     
     @IBAction func ibMaxButtonPress(_ sender: Any) {
-        ibSliderRed.value = ibSliderRed.maximumValue
-        ibSliderBlue.value = ibSliderBlue.maximumValue
-        ibSliderGreen.value = ibSliderGreen.maximumValue
-        ibLabelRedValue.text = String(Int(ibSliderRed.value))
-        ibLabelBlueValue.text = String(Int(ibSliderBlue.value))
-        ibLabelGreenValue.text = String(Int(ibSliderGreen.value))
+        setToAllSlider(maxValueSlider)
+        updateLabelColor()
         colorFillComponent()
         
     }
     
     @IBAction func ibMediumButtonPress(_ sender: Any) {
-        ibSliderRed.value = (ibSliderRed.maximumValue - ibSliderRed.minimumValue) / 2
-        ibSliderBlue.value = (ibSliderBlue.maximumValue - ibSliderBlue.minimumValue) / 2
-        ibSliderGreen.value = (ibSliderGreen.maximumValue - ibSliderGreen.minimumValue) / 2
-        ibLabelRedValue.text = String(Int(ibSliderRed.value))
-        ibLabelBlueValue.text = String(Int(ibSliderBlue.value))
-        ibLabelGreenValue.text = String(Int(ibSliderGreen.value))
+        setToAllSlider(medValueSlider)
+        updateLabelColor()
         colorFillComponent()
     }
     
     @IBAction func ibMinButtonPress(_ sender: Any) {
-        ibSliderRed.value = ibSliderRed.minimumValue
-        ibSliderBlue.value = ibSliderBlue.minimumValue
-        ibSliderGreen.value = ibSliderGreen.minimumValue
-        ibLabelRedValue.text = String(Int(ibSliderRed.value))
-        ibLabelBlueValue.text = String(Int(ibSliderBlue.value))
-        ibLabelGreenValue.text = String(Int(ibSliderGreen.value))
+        setToAllSlider(minValueSlider)
+        updateLabelColor()
         colorFillComponent()
     }
     
     @IBAction func ibSliderRedValueChanged(_ sender: Any) {
-        ibLabelRedValue.text = String(Int(ibSliderRed.value))
+        updateLabelColor()
         colorFillComponent()
     }
     
     @IBAction func ibSliderGreenValueChanged(_ sender: Any) {
-        ibLabelGreenValue.text = String(Int(ibSliderGreen.value))
+        updateLabelColor()
         colorFillComponent()
     }
     
